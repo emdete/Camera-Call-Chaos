@@ -1,3 +1,7 @@
 pyvirtualcam
 Pillow
 opencv-python
+
+python3-torch
+python3-torchvision
+python3-seaborn
