@@ -236,7 +236,7 @@ for arg in sys.argv[1:]:
 	if arg == "-d" or arg == '--debug':
 		# enable debugger
 		DEBUGGING = True
-	if arg == "-r" or arg == '--resizeable':
+	elif arg == "-r" or arg == '--resizeable':
 		RESIZEABLE = True
 
 if DEBUGGING:
