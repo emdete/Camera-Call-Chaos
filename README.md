@@ -1,6 +1,9 @@
 # Camera Call Chaos
 
-This project was create during Jugend hackt München 2021. First in foremost we wanted to have some fun and explore how to play with camera input. Therefore we implemented a video processing application for video conferences. You can select filters or blur out people in the background.
+This project was create during Jugend hackt München 2021. First in foremost we
+wanted to have some fun and explore how to play with camera input. Therefore we
+implemented a video processing application for video conferences. You can
+select filters or blur out people in the background.
 
 ## Usage
 
@@ -11,9 +14,11 @@ This project was create during Jugend hackt München 2021. First in foremost we 
    $ source .env/bin/activate
    $ pip install -r requirements.txt
    ```
-3. If you are using macOS or Window, install OBS, open it, activate the virtual camera and then close OBS.
+3. If you are using macOS or Window, install OBS, open it, activate the virtual
+   camera and then close OBS.
 3. Start the GUI
    ```console
+   $ cd src
    $ python3 gui.py
    ```
 4. Join a video call and select the virtual camera.
