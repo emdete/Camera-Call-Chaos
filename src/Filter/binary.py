@@ -2,7 +2,7 @@ import cv2
 
 import numpy as np
 
-def binary(frames, width, height):
+def binary(frames, width, height, **argv):
 
 
     lab= cv2.cvtColor(frames, cv2.COLOR_BGR2HSV)

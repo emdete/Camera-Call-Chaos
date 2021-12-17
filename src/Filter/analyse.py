@@ -4,7 +4,7 @@ import torch
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
 
 
-def analyseImage(image):
+def analyseImage(image, **argv):
     imgs = [image] 
     results = model(imgs)
     test = results.pandas().xyxy[0]

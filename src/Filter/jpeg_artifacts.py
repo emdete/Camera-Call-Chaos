@@ -3,7 +3,7 @@ from io import BytesIO
 import numpy as np
 
 
-def jpeg_corruption(frame):
+def jpeg_corruption(frame, **argv):
     img = Image.fromarray(frame)
     with BytesIO() as f:
         img.save(f, format='JPEG', quality=30)
@@ -18,7 +18,7 @@ def jpeg_corruption(frame):
      return jpeg_compression(frame)
 
 
-def jpeg_compression(frame):
+def jpeg_compression(frame, **argv):
     img = Image.fromarray(frame)
     with BytesIO() as f:
         img.save(f, format='JPEG', quality=1)

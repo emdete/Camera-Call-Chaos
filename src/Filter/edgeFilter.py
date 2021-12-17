@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-def edgeFilter(frame):
+def edgeFilter(frame, **argv):
     ksize = (0, 10)
     edges = cv2.Canny(frame,100,70)
     res2 = cv2.Canny(frame,1,1)

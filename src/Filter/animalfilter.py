@@ -4,7 +4,7 @@ import numpy as np
 import torch
 
 #model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-def animalfilter(frame, model):
+def animalfilter(frame, model, **argv):
 
     image = Image.open("Animal.jpg")
 

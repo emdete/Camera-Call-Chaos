@@ -1,6 +1,6 @@
 import cv2
 
-def waterfilter(frame):
+def waterfilter(frame, **argv):
     res = cv2.stylization(frame, sigma_s=100, sigma_r=0.6)
     return res
 

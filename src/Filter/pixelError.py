@@ -5,7 +5,7 @@ import time
 import numpy as np
 
 counter = 0
-def pixelError(frames):
+def pixelError(frames, **argv):
     global counter
     counter = counter +1
     points = ""

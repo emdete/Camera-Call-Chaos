@@ -2,7 +2,7 @@ import cv2
 import torch
 
 #model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-def blurfilter(frame, model):
+def blurfilter(frame, model, **argv):
     img = frame
     h, w, c = img.shape
     result = model(img)

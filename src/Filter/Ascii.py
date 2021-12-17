@@ -2,7 +2,7 @@ import cv2
 
 import numpy as np
 
-def ascii(frames, width, height):
+def ascii(frames, width, height, **argv):
 
     lab= cv2.cvtColor(frames, cv2.COLOR_BGR2HSV)
     frame = cv2.cvtColor(lab, cv2.COLOR_BGR2GRAY)
