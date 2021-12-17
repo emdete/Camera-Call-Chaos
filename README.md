@@ -23,3 +23,8 @@ select filters or blur out people in the background.
    ```
 4. Join a video call and select the virtual camera.
 5. Have fun :)
+
+## Links
+
+[umlaeute](https://github.com/umlaeute/v4l2loopback)
+
