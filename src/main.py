@@ -3,14 +3,14 @@ import numpy as np
 import cv2 as cv
 import os
 import torch
-from Filter.jpeg_artifacts import jpeg_corruption, jpeg_compression
-from Filter.animalfilter import animalfilter
-from Filter.asciiart import asciiart
-from Filter.binary import binary
-from Filter.blurfilter import blurfilter
-from Filter.edgeFilter import edgeFilter
-from Filter.pixelError import pixelError
-from Filter.waterfilter import waterfilter
+from effects.jpeg_artifacts import jpeg_corruption, jpeg_compression
+from effects.animalfilter import animalfilter
+from effects.asciiart import asciiart
+from effects.binary import binary
+from effects.blurfilter import blurfilter
+from effects.edgeFilter import edgeFilter
+from effects.pixelError import pixelError
+from effects.waterfilter import waterfilter
 from loop import loop
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)

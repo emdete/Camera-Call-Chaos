@@ -1,4 +1,4 @@
-from Filter.jpeg_artifacts import jpeg_corruption
+from effects.jpeg_artifacts import jpeg_corruption
 
 frames = []
 current_frame = 0
