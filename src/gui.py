@@ -14,6 +14,10 @@ class State:
 
 # GUI init
 app = Tk()
+def quit(*a):
+	app.quit()
+for n in ('<Control-q>', '<Control-w>', '<Control-x>', '<Alt-F4>', 'q', ):
+	app.bind_all(n, quit)
 
 windowWidth = 650
 windowHeight = 450
