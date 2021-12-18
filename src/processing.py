@@ -15,13 +15,13 @@ from effects.jpeg_artifacts import jpeg_corruption
 
 class Processor(object):
 	def __init__(self, state):
-		self.running = True
+		self.state = state
 		self.frames = []
 		self.current_frame = 0
 		self.frame_count = 0
 		self.forward = False
 		self.model = hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-		self.filters = dict(
+		self.effects = dict(
 			animalfilter=animalfilter,
 			jpeg_compression=jpeg_compression,
 			jpeg_corruption=jpeg_corruption,
@@ -60,6 +60,7 @@ class Processor(object):
 
 	def run(self):
 		try:
+			self.state.running = True
 			capture = cv.VideoCapture(int(environ.get("WEBCAM_INDEX", 0)))
 			width = int(capture.get(cv.CAP_PROP_FRAME_WIDTH))
 			height = int(capture.get(cv.CAP_PROP_FRAME_HEIGHT))
@@ -75,16 +76,15 @@ class Processor(object):
 				while self.running:
 					isTrue, frame = capture.read()
 					frame = flip(frame, axis=1)
-					frame = __process(frame, state.recording, state.glitch)
-					if state.filter in self.filters:
-						frame = self.filters[state.filter](frame, model=self.model, width=width, height=height)
+					frame = __process(frame, self.state.recording, self.state.glitch)
+					if self.state.effect in self.effects:
+						frame = self.effects[self.state.effect](frame, model=self.model, width=width, height=height)
 					cam.send(frame)
 					cam.sleep_until_next_frame()
 			capture.release()
 			cv.destroyAllWindows()
+		except Exception as e:
+			print('Error', e)
 		finally:
 			print('Processing-thread terminating')
-
-def run(state):
-	Processor(state).run()
 
