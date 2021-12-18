@@ -13,24 +13,27 @@ from effects.waterfilter import waterfilter
 from effects.jpeg_artifacts import jpeg_corruption
 
 class Processor(object):
-	def __init__(self, state):
-		self.state = state
+	def __init__(self, ):
 		self.frames = []
 		self.current_frame = 0
 		self.frame_count = 0
 		self.forward = False
 		self.model = hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
 		self.effects = dict(
-			animalfilter=animalfilter,
+			animal=animalfilter,
 			compression=jpeg_compression,
 			corruption=jpeg_corruption,
 			asciiart=asciiart,
 			asciiart_binary=asciiart_binary,
-			blurfilter=blurfilter,
+			blur=blurfilter,
 			edge=edgeFilter,
 			pixelError=pixelError,
-			waterfilter=waterfilter,
+			water=waterfilter,
 			)
+		self.running = None
+		self.recording = False
+		self.glitch = False
+		self.effect = 'normal'
 
 	def process(self, frame, rec, glitch):
 		if rec:
@@ -55,11 +58,11 @@ class Processor(object):
 			return frame
 
 	def quit(self):
-		self.state.running = False
+		self.running = False
 
 	def run(self):
 		try:
-			self.state.running = True
+			self.running = True
 			capture = cv.VideoCapture(int(environ.get("WEBCAM_INDEX", 0)))
 			width = int(capture.get(cv.CAP_PROP_FRAME_WIDTH))
 			height = int(capture.get(cv.CAP_PROP_FRAME_HEIGHT))
@@ -73,12 +76,12 @@ class Processor(object):
 				backend='v4l2loopback',
 			) as cam:
 				print('Using virtual camera:', cam.device)
-				while self.state.running:
+				while self.running:
 					isTrue, frame = capture.read()
 					frame = flip(frame, axis=1)
-					frame = self.process(frame, self.state.recording, self.state.glitch)
-					if self.state.effect in self.effects:
-						frame = self.effects[self.state.effect](frame, model=self.model, width=width, height=height)
+					frame = self.process(frame, self.recording, self.glitch)
+					if self.effect in self.effects:
+						frame = self.effects[self.effect](frame, model=self.model, width=width, height=height)
 					cam.send(frame)
 					cam.sleep_until_next_frame()
 			capture.release()
