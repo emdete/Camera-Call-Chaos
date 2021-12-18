@@ -27,19 +27,19 @@ def normalState():
 	set_state('normal')
 
 def corruptionState():
-	set_state('jpeg_corruption')
+	set_state('corruption')
 
 def compressionState():
-	set_state('jpeg_compression')
+	set_state('compression')
 
 def lowPixelatedState():
-	set_state('binary')
+	set_state('asciiart_binary')
 
-def oldMovieState():
+def blurfilterState():
 	set_state('blurfilter')
 
 def colorInvertState():
-	set_state('edgeFilter')
+	set_state('edge')
 
 def blurFilterState():
 	set_state('waterfilter')
@@ -94,7 +94,7 @@ Button(frame, text='Korruption', command=corruptionState, **widgets_defaults) .g
 Button(frame, text='Compression', command=compressionState, **widgets_defaults) .grid(row=0, column=2, **grid_defaults)
 Button(frame, text='AsciiArt', command=asciiartState, **widgets_defaults) .grid(row=1, column=0, **grid_defaults)
 Button(frame, text='Binary', command=lowPixelatedState, **widgets_defaults) .grid(row=1, column=1, **grid_defaults)
-Button(frame, text='Blur', command=oldMovieState, **widgets_defaults) .grid(row=1, column=2, **grid_defaults)
+Button(frame, text='Blur', command=blurfilterState, **widgets_defaults) .grid(row=1, column=2, **grid_defaults)
 Button(frame, text='Edge', command=colorInvertState, **widgets_defaults) .grid(row=2, column=0, **grid_defaults)
 Button(frame, text='Animal Filter', command=animalFilterState, **widgets_defaults) .grid(row=2, column=1, **grid_defaults)
 Button(frame, text='Water', command=blurFilterState, **widgets_defaults) .grid(row=2, column=2, **grid_defaults)
